@@ -1,0 +1,217 @@
+.brand-logo {
+  padding-left: 16px !important;
+}
+
+.event-container {
+  position: relative;
+  width: 100%;
+  max-width: 1260px;
+  margin: 20px auto;
+  color: white;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  /* Rounded borders */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1260px;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  z-index: -1;
+  border-radius: 10px;
+  /* Ensure the banner also has rounded borders */
+}
+
+.event-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.event-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  margin: 0 20px;
+}
+
+.event-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.event-details h2 {
+  margin: 5px 0;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.event-details p {
+  margin: 1px 0;
+  font-size: 16px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  align-items: center;
+  display: flex;
+}
+
+i {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.event-details p i {
+  margin-right: 5px;
+}
+
+.link-without-decoration {
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+  display: flex;
+}
+
+.event-details-right {
+  margin-left: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.calendar-day {
+  padding: 20px;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+.calendar-nav {
+  display: flex;
+  justify-content: right;
+  margin-bottom: 20px;
+  flex-direction: row;
+  width: 100%;
+}
+
+.calendar-nav form {
+  display: flex;
+  align-items: center;
+}
+
+.calendar-nav input,
+.calendar-nav button {
+  margin: 0 5px;
+}
+
+.calendar-nav input {
+  width: 75px !important;
+  text-align: center;
+}
+
+.simplified-event-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.2);
+  background-position: center;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.simplified-event-icon {
+  width: 125px;
+  height: 125px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+}
+
+.simplified-event-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 16px;
+}
+
+.simplified-event-details h2 {
+  margin: 5px 0;
+  font-size: 32px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.simplified-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1260px;
+  height: 222px;
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  z-index: -1;
+  border-radius: 10px;
+  /* Ensure the banner also has rounded borders */
+}
+
+.event-detail {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.event-detail-left {
+  width: 60%;
+}
+
+.event-detail-right {
+  width: 30%;
+}
+
+.event-detail-right .organizer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.organizer-details {
+  display: flex;
+  align-items: center;
+}
+
+.hidden-button {
+  border: none; 
+  background: none;
+}
+
+.event-organizer-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.event-organizer-actions a {
+  margin-top: 1rem;
+}

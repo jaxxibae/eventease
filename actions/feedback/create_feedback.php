@@ -1,0 +1,23 @@
+<?php
+
+require_once __DIR__ . '/../../core/business/feedback_business.php';
+require_once __DIR__ . '/../../core/utils/session_storage/native_session_storage.php';
+
+use Utils\Session_storage\NativeSessionStorage;
+
+// Create a new session storage instance
+$sessionStorage = new NativeSessionStorage();
+
+$feedback_business = new FeedbackBusiness();
+
+try {
+    $feedback = $feedback_business->create_feedback($_POST['event_id'], $_POST['user_id'], $_POST['rating'], $_POST['comment']);
+
+    if ($feedback) {
+        header('Location: /pages/event.php?id=' . $_POST['event_id'] . '&success=Your feedback has been submitted successfully.');
+    } else {
+        header('Location: /pages/event.php?id=' . $_POST['event_id'] . '&error=There was an error submitting your feedback. Please try again.');
+    }
+} catch (Exception $e) {
+    header('Location: /pages/event.php?id=' . $_POST['event_id'] . '&error=' . $e->getMessage());
+}
