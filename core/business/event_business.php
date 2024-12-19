@@ -94,13 +94,17 @@ class EventBusiness
             if ($next_event === null) {
                 $next_event = $event;
             } else {
-                $next_event_date = new DateTime($next_event['Date'] . ' ' . $next_event['Time']);
-                $event_date = new DateTime($event['Date'] . ' ' . $event['Time']);
+                $next_event_date = new DateTime($next_event['EventDate'] . ' ' . $next_event['EventTime']);
+                $event_date = new DateTime($event['EventDate'] . ' ' . $event['EventTime']);
 
                 if ($event_date < $next_event_date) {
                     $next_event = $event;
                 }
             }
+        }
+
+        if (new DateTime($next_event['EventDate'] . ' ' . $next_event['EventTime']) < new DateTime()) {
+            return null;
         }
 
         return $next_event;

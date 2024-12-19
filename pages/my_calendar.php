@@ -16,8 +16,7 @@ if ($sessionStorage->get('user_id') === null) {
 
 $ongoing_events = [];
 
-
-$ongoing_events = [];
+$attended_events = [];
 
 // Fetch events from the API
 
@@ -35,6 +34,17 @@ try {
             $ongoing_events = [$ongoing_events];
         }
     }
+
+    $client = new Requests('http://localhost:5550/actions/attendance/');
+
+    $response = $client->get_as_json('get_attendances_by_user_id.php?user_id=' . $sessionStorage->get('user_id'));
+
+    if ($response !== null) {
+        $attended_events = $response;
+
+        if ($attended_events instanceof stdClass) {
+            $attended_events = [$attended_events];
+        }}
 } catch (Exception $e) {
     echo 'Caught exception: ', $e->getMessage(), "\n";
 }

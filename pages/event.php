@@ -86,7 +86,7 @@ $isPastEvent = $eventDate < $currentDate;
                 <h2>Event Organizer</h2>
                 <p><?php echo $event->EventOrganizer; ?></p>
                 <h2>Want to attend?</h2>
-                <form action="actions/attendance/register_attendance.php" method="POST">
+                <form action="/actions/attendance/register_attendance.php" method="POST">
                     <input type="hidden" name="event_id" value="<?php echo $event->Id; ?>">
                     <button class="waves-effect waves-light btn <?php echo $isPastEvent ? 'disabled' : ($attendance ? 'disabled' : ''); ?>">
                         <i class="material-icons left">event</i>

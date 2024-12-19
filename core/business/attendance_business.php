@@ -54,4 +54,9 @@ class AttendanceBusiness
     {
         return $this->attendanceDAO->update_attendance($attendance_id, $status, $motive ?? '');
     }
+
+    public function get_attendances_by_user_id($user_id): array
+    {
+        return $this->attendanceDAO->get_attendances_by_user_id($user_id);
+    }
 }

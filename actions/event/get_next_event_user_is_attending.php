@@ -16,7 +16,7 @@ try {
     if ($events) {
         echo json_encode($events);
     } else {
-        echo json_encode([]);
+        echo json_encode(null);
     }
 } catch (Exception $e) {
     header('Location: /pages/dashboard.php?error=' . $e->getMessage());

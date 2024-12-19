@@ -52,7 +52,87 @@ if ($nextMonth > 12) {
     }
 
     for ($day = 1; $day <= $daysInMonth; $day++) {
-        echo "<div class='calendar-day'>$day</div>";
+        echo "<div class='calendar-day' id='day_$day'>
+            <span class='calendar-day-number'>$day</span>
+        </div>";
     }
     ?>
 </section>
+
+<div id="mini-event-card"></div>
+
+<?php
+foreach ($attended_events as $event) {
+    $eventDate = strtotime($event->EventDate);
+    $eventDay = date('j', $eventDate);
+    $eventMonth = date('n', $eventDate);
+    $eventYear = date('Y', $eventDate);
+
+    if ($eventMonth == $month && $eventYear == $year) {
+        $event->BannerUrl = str_replace('/', '\/', $event->BannerUrl);
+
+        // Check if event has already happened
+        $currentDate = new DateTime();
+        $eventDate = new DateTime($event->EventDate . ' ' . $event->EventTime);
+        $isPastEvent = $eventDate < $currentDate;
+
+        $button = <<<EOD
+        <button class="attendance-dot"></button>
+        EOD;
+
+        $render_card_details = <<<EOD
+            function renderCardDetails(buttonElement) {
+                document.getElementById('mini-event-card').style.visibility = 'visible';
+                document.getElementById('mini-event-card').style.transition = 'visibility 0s, opacity 0.5s linear;';
+                document.getElementById('mini-event-card').innerHTML = `
+                <div class="event-container" style="width: 200px; height: 120px;">
+                    <div class="banner" style="background-image: url($event->BannerUrl); background-size: contain;">
+                    </div>
+                    <div class="event-content">
+                        <div class="event-details">
+                            <strong><p>$event->EventName</p></strong>
+                            <div class="event-details-right">
+                                <a href="event.php?id=$event->EventId" class="link-without-decoration">
+                                    <i class="material-icons">open_in_new</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+
+                var buttonPosition = buttonElement.getBoundingClientRect();
+                document.getElementById('mini-event-card').style.top = buttonPosition.top + 'px';
+                document.getElementById('mini-event-card').style.left = buttonPosition.left + 'px';
+
+                document.getElementById('mini-event-card').style.position = 'absolute';
+                document.getElementById('mini-event-card').style.zIndex = '1000';
+            }
+        EOD;
+
+        $check_past_event = <<<EOD
+            if ($isPastEvent) {
+                document.getElementById('day_$eventDay').style.backgroundColor = 'rgba(255, 0, 0, 0.2)';
+            } else {
+                document.getElementById('day_$eventDay').style.backgroundColor = 'rgba(0, 255, 0, 0.2)';
+            }
+        EOD;
+
+        echo "<script>
+            document.getElementById('day_$eventDay').innerHTML += '$button';
+
+            $check_past_event
+
+            $render_card_details
+
+            document.addEventListener('click', function(event) {
+                if (event.target.className !== 'attendance-dot') {
+                    document.getElementById('mini-event-card').style.visibility = 'hidden';
+                } else {
+                    renderCardDetails(event.target);
+                }
+            });
+        </script>";
+    }
+}
+?>
