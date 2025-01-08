@@ -97,7 +97,7 @@ class EventBusiness
                 $next_event_date = new DateTime($next_event['EventDate'] . ' ' . $next_event['EventTime']);
                 $event_date = new DateTime($event['EventDate'] . ' ' . $event['EventTime']);
 
-                if ($event_date < $next_event_date) {
+                if ($event_date > $next_event_date) {
                     $next_event = $event;
                 }
             }

@@ -74,7 +74,7 @@ foreach ($attended_events as $event) {
         // Check if event has already happened
         $currentDate = new DateTime();
         $eventDate = new DateTime($event->EventDate . ' ' . $event->EventTime);
-        $isPastEvent = $eventDate < $currentDate;
+        $isPastEvent = $eventDate < $currentDate ? 'true' : 'false';
 
         $button = <<<EOD
         <button class="attendance-dot"></button>
@@ -111,7 +111,7 @@ foreach ($attended_events as $event) {
         EOD;
 
         $check_past_event = <<<EOD
-            if ($isPastEvent) {
+            if (true === $isPastEvent) {
                 document.getElementById('day_$eventDay').style.backgroundColor = 'rgba(255, 0, 0, 0.2)';
             } else {
                 document.getElementById('day_$eventDay').style.backgroundColor = 'rgba(0, 255, 0, 0.2)';

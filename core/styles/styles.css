@@ -127,10 +127,12 @@ i {
     transform: scale(1);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   }
+
   50% {
     transform: scale(1.1);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
   }
+
   100% {
     transform: scale(1);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -235,7 +237,7 @@ i {
 }
 
 .hidden-button {
-  border: none; 
+  border: none;
   background: none;
 }
 
@@ -248,4 +250,82 @@ i {
 
 .event-organizer-actions a {
   margin-top: 1rem;
+}
+
+.star-wrap {
+  width: max-content;
+  margin: 0 auto;
+  position: relative;
+}
+
+.star-label.hidden {
+  display: none;
+}
+
+.star-label {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+}
+
+@media (min-width: 840px) {
+  .star-label {
+    width: 5rem;
+    height: 5rem;
+  }
+}
+
+.star-shape {
+  background-color: gold;
+  width: 50%;
+  height: 50%;
+  /* from Clippy @ https://bennettfeely.com/clippy/ */
+  clip-path: polygon(50% 0%,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%);
+}
+
+.star:checked+.star-label~.star-label .star-shape {
+  background-color: lightgray;
+}
+
+.star {
+  position: fixed;
+  opacity: 0;
+  left: -90000px;
+}
+
+.star:focus+.star-label {
+  outline: 2px dotted black;
+}
+
+.skip-button {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 1rem;
+  position: absolute;
+  top: -2rem;
+  right: -1rem;
+  text-align: center;
+  line-height: 2rem;
+  font-size: 2rem;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.skip-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+#skip-star:checked~.skip-button {
+  display: none;
 }

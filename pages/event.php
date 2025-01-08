@@ -115,13 +115,16 @@ $isPastEvent = $eventDate < $currentDate;
                         </a>
                         <a href="event_attendance.php?id=<?php echo $event->Id; ?>" class="waves-effect waves-light btn">
                             <i class="material-icons left">event</i>
-                            View Attendance
+                            View Attendances
+                        </a>
+                        <a href="event_feedback.php?id=<?php echo $event->Id; ?>" class="waves-effect waves-light btn">
+                            <i class="material-icons left">feedback</i>
+                            View Feedbacks
                         </a>
                     <?php endif; ?>
                 </div>
             </div>
         </div>
-
     </section>
 </main>
 

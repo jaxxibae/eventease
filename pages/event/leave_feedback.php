@@ -59,16 +59,36 @@ try {
                 <input type="hidden" name="user_id" value="<?php echo $sessionStorage->get('user_id'); ?>">
                 <div class="form-group">
                     <label for="rating">Rating</label>
-                    <select class="form-control" id="rating" name="rating">
-                        <option value="1">1 Star</option>
-                        <option value="2">2 Stars</option>
-                        <option value="3">3 Stars</option>
-                        <option value="4">4 Stars</option>
-                        <option value="5">5 Stars</option>
-                    </select>
+                    <div class="star-wrap">
+                        <input class="star" checked type="radio" value="-1" id="skip-star" name="rating" autocomplete="off" />
+                        <label class="star-label hidden"></label>
+                        <input class="star" type="radio" id="st-1" value="1" name="rating" autocomplete="off" />
+                        <label class="star-label" for="st-1">
+                            <div class="star-shape"></div>
+                        </label>
+                        <input class="star" type="radio" id="st-2" value="2" name="rating" autocomplete="off" />
+                        <label class="star-label" for="st-2">
+                            <div class="star-shape"></div>
+                        </label>
+                        <input class="star" type="radio" id="st-3" value="3" name="rating" autocomplete="off" />
+                        <label class="star-label" for="st-3">
+                            <div class="star-shape"></div>
+                        </label>
+                        <input class="star" type="radio" id="st-4" value="4" name="rating" autocomplete="off" />
+                        <label class="star-label" for="st-4">
+                            <div class="star-shape"></div>
+                        </label>
+                        <input class="star" type="radio" id="st-5" value="5" name="rating" autocomplete="off" />
+                        <label class="star-label" for="st-5">
+                            <div class="star-shape"></div>
+                        </label>
+                        <label class="skip-button" for="skip-star">
+                            &times;
+                        </label>
+                    </div>
                 </div>
                 <div class="input-field">
-                    <textarea id="comment" class="materialize-textarea"></textarea>
+                    <textarea id="comment" name="comment" class="materialize-textarea"></textarea>
                     <label for="comment">Comment</label>
                 </div>
                 <button type="submit" class="btn">Submit Feedback</button>

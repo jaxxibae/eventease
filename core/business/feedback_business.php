@@ -25,4 +25,9 @@ class FeedbackBusiness
     {
         return $this->feedbackDAO->get_feedback_by_event_id_and_user_id($event_id, $user_id);
     }
+
+    public function get_feedback_by_event_id($event_id): mixed
+    {
+        return $this->feedbackDAO->get_feedback_by_event_id($event_id);
+    }
 }

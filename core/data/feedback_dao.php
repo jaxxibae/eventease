@@ -31,4 +31,11 @@ class FeedbackDAO {
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function get_feedback_by_event_id($event_id): mixed {
+        $stmt = $this->db->prepare('SELECT Feedback.*, u.Name as AttendeeName FROM Feedback JOIN Users u ON Feedback.UserId = u.Id WHERE EventId = :eventId');
+        $stmt->bindParam(':eventId', $event_id);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
