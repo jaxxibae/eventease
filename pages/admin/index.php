@@ -77,7 +77,7 @@ if ($user_data['Role'] !== 'Admin') {
                         <p>View and manage event feedback</p>
                     </div>
                     <div class="card-action">
-                        <a href="/pages/admin/feedback.php">View Event Feedback</a>
+                        <a href="/pages/admin/feedbacks.php">View Event Feedback</a>
                     </div>
                 </div>
             </div>

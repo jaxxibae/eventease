@@ -14,7 +14,9 @@
             }
             ?>
             <th>View</th>
-            <th>Edit</th>
+            <?php if ($is_edit_enabled) {
+                echo '<th>Edit</th>';
+            } ?>
             <th>Delete</th>
         </tr>
     </thead>
@@ -27,7 +29,9 @@
                 echo '<td>' . $object->{$row_key} . '</td>';
             }
             echo '<td><a href="/pages/admin/' . $object_name . 's/view_' . $object_name . '.php?id=' . $object->Id . '"><i class="material-icons left">remove_red_eye</i></a></td>';
-            echo '<td><a href="/pages/admin/'. $object_name .'s/edit_' . $object_name . '.php?id=' . $object->Id . '"><i class="material-icons left">edit</i></a></td>';
+            if ($is_edit_enabled) {
+                echo '<td><a href="/pages/admin/'. $object_name .'s/edit_' . $object_name . '.php?id=' . $object->Id . '"><i class="material-icons left">edit</i></a></td>';
+            }
             echo '<td><a href="/pages/admin/'. $object_name .'s/delete_' . $object_name . '.php?id=' . $object->Id . '"><i class="material-icons left">delete</i></a></td>';
             echo '</tr>';
         }

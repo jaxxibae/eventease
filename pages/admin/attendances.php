@@ -46,6 +46,8 @@ $rows = [
     'Status' => 'Status',
 ];
 
+$is_edit_enabled = false;
+
 ?>
 
 <main>

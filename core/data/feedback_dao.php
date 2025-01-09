@@ -38,4 +38,17 @@ class FeedbackDAO {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function get_feedback_by_id($id): mixed {
+        $stmt = $this->db->prepare('SELECT Feedback.*, u.Name AS AttendeeName, e.Name AS EventName FROM Feedback JOIN Users u ON Feedback.UserId = u.Id JOIN Events e ON Feedback.EventId = e.Id WHERE Feedback.Id = :id');
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function delete_feedback_by_id($id): bool {
+        $stmt = $this->db->prepare('DELETE FROM Feedback WHERE Id = :id');
+        $stmt->bindParam(':id', $id);
+        return $stmt->execute();
+    }
 }

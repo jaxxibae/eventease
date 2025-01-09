@@ -30,4 +30,14 @@ class FeedbackBusiness
     {
         return $this->feedbackDAO->get_feedback_by_event_id($event_id);
     }
+
+    public function get_feedback_by_id($id): mixed
+    {
+        return $this->feedbackDAO->get_feedback_by_id($id);
+    }
+
+    public function delete_feedback_by_id($id): mixed
+    {
+        return $this->feedbackDAO->delete_feedback_by_id($id);
+    }
 }

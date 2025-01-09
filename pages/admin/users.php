@@ -46,6 +46,8 @@ $rows = [
     'Role' => 'Role'
 ];
 
+$is_edit_enabled = true;
+
 ?>
 
 <main>

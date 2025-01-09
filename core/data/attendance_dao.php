@@ -61,4 +61,19 @@ class AttendanceDAO
         $stmt->bindParam(':attendanceId', $attendance_id);
         return $stmt->execute();
     }
+    
+    public function get_attendance_by_id($attendance_id): mixed
+    {
+        $stmt = $this->db->prepare('SELECT Attendance.*, e.Name AS EventName, u.Name AS UserName FROM Attendance JOIN Events e ON EventId = e.Id JOIN Users u ON UserId = u.Id WHERE Attendance.Id = :attendanceId');
+        $stmt->bindParam(':attendanceId', $attendance_id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function delete_attendance($attendance_id): bool
+    {
+        $stmt = $this->db->prepare('DELETE FROM Attendance WHERE Id = :attendanceId');
+        $stmt->bindParam(':attendanceId', $attendance_id);
+        return $stmt->execute();
+    }
 }

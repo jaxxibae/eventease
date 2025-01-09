@@ -141,4 +141,9 @@ class EventBusiness
 
         return $events;
     }
+
+    public function delete_event_by_id($event_id): bool
+    {
+        return $this->eventDAO->delete_event_by_id($event_id);
+    }
 }

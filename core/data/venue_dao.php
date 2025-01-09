@@ -24,4 +24,28 @@ class VenueDAO {
         $stmt->execute();
         return $this->get_venues();
     }
+
+    public function get_venue_by_id($id) {
+        $stmt = $this->db->prepare('SELECT * FROM Venues WHERE id = :id');
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function update_venue($id, $venue_name, $venue_location, $venue_capacity) {
+        $stmt = $this->db->prepare('UPDATE Venues SET Name = :name, Location = :location, Capacity = :capacity WHERE id = :id');
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':name', $venue_name);
+        $stmt->bindParam(':location', $venue_location);
+        $stmt->bindParam(':capacity', $venue_capacity);
+        $stmt->execute();
+        return $this->get_venues();
+    }
+
+    public function delete_venue_by_id($id) {
+        $stmt = $this->db->prepare('DELETE FROM Venues WHERE id = :id');
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $this->get_venues();
+    }
 }

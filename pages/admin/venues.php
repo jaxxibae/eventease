@@ -47,6 +47,8 @@ $rows = [
     'Location' => 'Location'
 ];
 
+$is_edit_enabled = true;
+
 ?>
 
 <main>

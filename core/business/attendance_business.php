@@ -59,4 +59,14 @@ class AttendanceBusiness
     {
         return $this->attendanceDAO->get_attendances_by_user_id($user_id);
     }
+
+    public function get_attendance_by_id($attendance_id): mixed
+    {
+        return $this->attendanceDAO->get_attendance_by_id($attendance_id);
+    }
+
+    public function delete_attendance($attendance_id): bool
+    {
+        return $this->attendanceDAO->delete_attendance($attendance_id);
+    }
 }

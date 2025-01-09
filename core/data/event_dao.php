@@ -86,4 +86,10 @@ class EventDAO {
 
         return $this->get_event_by_id($event_id);
     }
+
+    public function delete_event_by_id($id): bool {
+        $stmt = $this->db->prepare('DELETE FROM Events WHERE Id = :id');
+        $stmt->bindParam(':id', $id);
+        return $stmt->execute();
+    }
 }

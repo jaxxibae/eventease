@@ -47,6 +47,8 @@ $rows = [
     'EventOrganizer' => 'Organizer'
 ];
 
+$is_edit_enabled = false;
+
 ?>
 
 <main>

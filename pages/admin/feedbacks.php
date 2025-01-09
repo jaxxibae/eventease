@@ -46,6 +46,8 @@ $rows = [
     'Rating' => 'Rating',
 ];
 
+$is_edit_enabled = false;
+
 ?>
 
 <main>

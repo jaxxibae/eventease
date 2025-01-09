@@ -1,7 +1,7 @@
 <?php
 
 
-$pageTitle = 'Admin Area - Users - Delete';
+$pageTitle = 'Admin Area - Attendances - Delete';
 require_once __DIR__ . '/../../../core/components/header.php';
 require_once __DIR__ . '/../../../core/utils/session_storage/native_session_storage.php';
 
@@ -26,10 +26,10 @@ $data = [];
 
 require_once __DIR__ . '/../../../core/utils/requests.php';
 
-$client = new Requests('http://localhost:5550/actions/user/');
+$client = new Requests('http://localhost:5550/actions/attendance/');
 
 try {
-    $response = $client->get_as_json('get_user_by_id.php?id=' . $_GET['id']);
+    $response = $client->get_as_json('get_attendance_by_id.php?id=' . $_GET['id']);
 
     if ($response !== null) {
         $data = $response;
@@ -42,11 +42,11 @@ try {
 
 <main>
     <section class="container">
-        <h1>Delete User</h1>
-        <p>Are you sure you want to delete this user?</p>
+        <h1>Delete Attendance</h1>
+        <p>Are you sure you want to delete this attendance?</p>
         <p>This action cannot be undone.</p>
         <div class="row">
-            <form action="/actions/user/delete_user.php" class="col s12" method="POST">
+            <form action="/actions/attendance/delete_attendance.php" class="col s12" method="POST">
                 <div class="row">
                     <input type="text" id="id" name="id" value="<?php echo $data->Id; ?>" hidden>
                     <button class="btn waves-effect waves-light red" type="submit" name="action">Delete
@@ -61,10 +61,3 @@ try {
 <?php
 require_once __DIR__ . '/../../../core/components/footer.php';
 ?>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('select');
-        var instances = M.FormSelect.init(elems);
-    });
-</script>

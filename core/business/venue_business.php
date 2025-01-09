@@ -22,4 +22,20 @@ class VenueBusiness
         $venue_location = $venue_city . ', ' . $venue_country;
         return $this->venueDAO->create_venue($venue_name, $venue_location, $venue_capacity);
     }
+
+    public function get_venue_by_id($id): array
+    {
+        return $this->venueDAO->get_venue_by_id($id);
+    }
+
+    public function edit_venue($id, $venue_name, $venue_city, $venue_country, $venue_capacity): array
+    {
+        $venue_location = $venue_city . ', ' . $venue_country;
+        return $this->venueDAO->update_venue($id, $venue_name, $venue_location, $venue_capacity);
+    }
+
+    public function delete_venue_by_id($id): array
+    {
+        return $this->venueDAO->delete_venue_by_id($id);
+    }
 }
