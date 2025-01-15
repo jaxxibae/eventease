@@ -29,14 +29,14 @@ CREATE TABLE `Attendance` (
   `Status` enum('Pending','Confirmed','Cancelled') NOT NULL DEFAULT 'Pending',
   `Motive` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `CreatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `UpdatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `UpdatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Active` bit(1) NOT NULL DEFAULT b'1',
   PRIMARY KEY (`Id`),
   KEY `EventId` (`EventId`),
   KEY `UserId` (`UserId`),
   CONSTRAINT `Attendance_ibfk_1` FOREIGN KEY (`EventId`) REFERENCES `Events` (`Id`),
   CONSTRAINT `Attendance_ibfk_2` FOREIGN KEY (`UserId`) REFERENCES `Users` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -57,7 +57,7 @@ CREATE TABLE `Events` (
   `VenueId` int NOT NULL,
   `CreatedById` int NOT NULL,
   `CreatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `UpdatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `UpdatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Active` bit(1) NOT NULL DEFAULT b'1',
   PRIMARY KEY (`Id`),
   KEY `CreatedById` (`CreatedById`),
@@ -81,7 +81,7 @@ CREATE TABLE `Feedback` (
   `Rating` int NOT NULL,
   `Comment` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `CreatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `UpdatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `UpdatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Active` bit(1) NOT NULL DEFAULT b'1',
   PRIMARY KEY (`Id`),
   KEY `EventId` (`EventId`),
@@ -89,7 +89,7 @@ CREATE TABLE `Feedback` (
   CONSTRAINT `Feedback_ibfk_1` FOREIGN KEY (`EventId`) REFERENCES `Events` (`Id`),
   CONSTRAINT `Feedback_ibfk_2` FOREIGN KEY (`UserId`) REFERENCES `Users` (`Id`),
   CONSTRAINT `Feedback_chk_1` CHECK (((`Rating` >= 1) and (`Rating` <= 5)))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -107,7 +107,7 @@ CREATE TABLE `Users` (
   `Salt` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
   `Role` enum('Admin','Event Manager','Attendee') NOT NULL DEFAULT (_utf8mb4'Attendee'),
   `CreatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `UpdatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `UpdatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Active` bit(1) NOT NULL DEFAULT b'1',
   PRIMARY KEY (`Id`),
   UNIQUE KEY `UC_User` (`EmailAddress`)
@@ -146,11 +146,14 @@ CREATE TABLE `Venues` (
   `Capacity` int NOT NULL,
   `Location` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
   `CreatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `UpdatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `UpdatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Active` bit(1) NOT NULL DEFAULT b'1',
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+--
+-- Dumping routines for database 'EventEase'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -161,4 +164,4 @@ CREATE TABLE `Venues` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-13 19:01:55
+-- Dump completed on 2025-01-15 18:41:11
