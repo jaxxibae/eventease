@@ -13,13 +13,17 @@ $role = $user_data['Role'];
 
 <nav>
   <div class="nav-wrapper">
-    <a href="/index.php" class="brand-logo">EventEase</a>
+    <div class="logo-and-text">
+      <img src="/assets/venue.svg" alt="EventEase Logo" class="logo pulsate">
+      <a href="/index.php" class="brand-logo">EventEase</a>
+    </div>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <?php
       if ($role === 'Event Manager') {
         echo '<li><a href="/pages/create_event.php">Create Event</a></li>';
         echo '<li><a href="/pages/my_events.php">My Events</a></li>';
-      } if ($role === 'Admin') {
+      }
+      if ($role === 'Admin') {
         echo '<li><a href="/pages/admin/index.php">Admin Area</a></li>';
       }
       echo '<li><a href="/pages/events_attended.php">Events Attended</a>';
