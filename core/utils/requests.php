@@ -26,16 +26,6 @@ class Requests
             throw new Exception('Failed to parse JSON response');
         }
 
-        $url = str_replace('5550', '3000', $url);
-
-        echo "<script>
-        (async () => {
-            var request = await fetch('$url');
-            var response = await request.json();
-            console.log(response);
-        })();
-        </script>";
-
         return $json_response;
     }
 
