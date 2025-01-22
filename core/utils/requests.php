@@ -16,7 +16,7 @@ class Requests
 
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        
+
         $response = curl_exec($ch);
         curl_close($ch);
 
@@ -25,6 +25,16 @@ class Requests
         if (json_last_error() !== JSON_ERROR_NONE) {
             throw new Exception('Failed to parse JSON response');
         }
+
+        $url = str_replace('5550', '3000', $url);
+
+        echo "<script>
+        (async () => {
+            var request = await fetch('$url');
+            var response = await request.json();
+            console.log(response);
+        })();
+        </script>";
 
         return $json_response;
     }

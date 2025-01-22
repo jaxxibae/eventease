@@ -41,7 +41,7 @@ class UserDAO {
         if ($user && Encryption::hashPassword($password, $user['Salt']) === $user['Hash']) {
             return $user['Id'];
         } else {
-            throw new Exception('Invalid email or password. '. $hash);
+            throw new Exception('Invalid email or password.');
         }
     }
 
