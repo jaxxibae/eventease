@@ -7,7 +7,7 @@ require_once __DIR__ . '/../core/components/header.php';
     <div class="container">
         <h1>Login</h1>
         <div class="row">
-            <form action="/actions/user/login.php" method="POST">
+            <form class="login-form">
                 <div class="row">
                     <div class="input-field">
                         <input id="email_address" name="email_address" type="email" class="validate">
@@ -18,7 +18,7 @@ require_once __DIR__ . '/../core/components/header.php';
                         <label for="password">Password</label>
                     </div>
 
-                    <button class="btn waves-effect waves-light" type="submit" name="action">
+                    <button class="btn waves-effect waves-light" id="submit" type="submit" name="action">
                         Login
                         <i class="material-icons right">send</i>
                     </button>
@@ -27,6 +27,8 @@ require_once __DIR__ . '/../core/components/header.php';
         </div>
     </div>
 </main>
+
+<script src="/core/scripts/login.js"></script>
 
 <?php
 require_once __DIR__ . '/../core/components/footer.php';
