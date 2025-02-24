@@ -11,6 +11,8 @@ require_once 'core/components/header.php';
         <p>It is a simple application that allows you to create an account, log in, attend events, create events, view events, give feedback, and more.</p>
         <p>Developed by David Paiva, 2022121, for the TI2 course at ISTEC.</p>
         <p>Get started by creating an account or logging in.</p>
+
+        <img src="assets/paiva.jpeg" alt="Paiva" class="img-fluid" style="max-width: 700px; margin-top: 20px;">
     </section>
 </main>
 
