@@ -19,5 +19,5 @@ try {
         echo json_encode([]);
     }
 } catch (Exception $e) {
-    header('Location: /pages/dashboard.php?error=' . $e->getMessage());
+    header('Location: /pages/events.php?error=' . $e->getMessage());
 }

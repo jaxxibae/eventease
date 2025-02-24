@@ -7,7 +7,7 @@ require_once __DIR__ . '/../core/components/header.php';
     <div class="container">
         <h1>Login</h1>
         <div class="row">
-            <form class="login-form">
+            <form class="login-form" id="login-form" method="post" action="/actions/user/login.php">
                 <div class="row">
                     <div class="input-field">
                         <input id="email_address" name="email_address" type="email" class="validate">
